@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxtiug36bo7y"]
+
+[ext_resource type="Script" uid="uid://c5b1ckfkpfhee" path="res://scripts/audio_manager.gd" id="1_se6ce"]
+[ext_resource type="AudioStream" uid="uid://cugp4tkdhc4vs" path="res://sounds/player_sfx/sfx_movement_jump15.wav" id="2_b6meb"]
+
+[node name="audio_manager" type="Node3D" groups=["audio_manager"]]
+script = ExtResource("1_se6ce")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="ui_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b6meb")
+bus = &"SFX"
+
+[node name="player_sfx" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

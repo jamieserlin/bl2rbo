@@ -1,0 +1,380 @@
+[gd_scene load_steps=12 format=3 uid="uid://e3087lmnirb"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_dvdtt"]
+[ext_resource type="Texture2D" path="res://textures/main_menu.png" id="2_12kdf"]
+[ext_resource type="Script" uid="uid://bvtlfqo067po5" path="res://scripts/audio_control.gd" id="3_i5qic"]
+[ext_resource type="FontFile" uid="uid://cnrneghp7qnrk" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="3_xwd2w"]
+[ext_resource type="Script" path="res://fullscreen_control.gd" id="4_12kdf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvdtt"]
+texture = ExtResource("2_12kdf")
+modulate_color = Color(0.847474, 0.847474, 0.847474, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5b7ti"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b7ti"]
+bg_color = Color(0.487009, 0.487009, 0.487009, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 5
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5qic"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 5
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dvdtt"]
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i5qic"]
+color = Color(0.766803, 0.445239, 0, 1)
+thickness = 4
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dvdtt")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvdtt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -106.5
+offset_right = 143.5
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("StartGameButton")
+focus_neighbor_top = NodePath("StartGameButton")
+focus_neighbor_right = NodePath("StartGameButton")
+focus_neighbor_bottom = NodePath("StartGameButton")
+focus_next = NodePath("OptionsButton")
+focus_previous = NodePath("QuitButton")
+focus_mode = 2
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(5.19812e-06, 0.846195, 0.770164, 1)
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.847059, 0.768627, 1)
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.847059, 0.768627, 1)
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Quit
+"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.847059, 0.768627, 1)
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Credits"
+
+[node name="GameTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -216.0
+offset_right = 200.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_font_sizes/font_size = 42
+text = "blorbo's aiftwwhdobmmfotaddbc: the game"
+horizontal_alignment = 1
+
+[node name="GameTitle" type="Label" parent="GameTitle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 14.5
+offset_right = 300.0
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_font_sizes/font_size = 12
+text = "glorbo's advance into facing the world which has dried out but makes many friends, overcomes trials and doesnt defeat big corporate: the game
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="OptionsMenu" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.5
+offset_top = -158.0
+offset_right = 240.5
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("BackButton")
+focus_neighbor_top = NodePath("BackButton")
+focus_neighbor_right = NodePath("BackButton")
+focus_neighbor_bottom = NodePath("BackButton")
+
+[node name="OptionMenuText" type="Label" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_font_sizes/font_size = 35
+text = "Options Menu"
+
+[node name="BackButton" type="Button" parent="OptionsMenu"]
+layout_mode = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.847059, 0.768627, 1)
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Back
+"
+
+[node name="MusicControl" type="HSlider" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.5
+offset_top = 77.0
+offset_right = 166.5
+offset_bottom = 93.0
+grow_horizontal = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_dvdtt")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_i5qic")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_i5qic")
+max_value = 1.0
+step = 0.05
+value = 0.3
+script = ExtResource("3_i5qic")
+audio_bus_name = "Music"
+
+[node name="Label" type="Label" parent="OptionsMenu/MusicControl"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -12.0
+offset_right = -5.5
+offset_bottom = 11.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xwd2w")
+text = "Music"
+
+[node name="SFXControl" type="HSlider" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 124.0
+offset_right = 167.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_dvdtt")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_i5qic")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_i5qic")
+max_value = 1.0
+step = 0.05
+value = 0.3
+script = ExtResource("3_i5qic")
+audio_bus_name = "SFX"
+
+[node name="Label" type="Label" parent="OptionsMenu/SFXControl"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = 11.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xwd2w")
+text = "SFX"
+
+[node name="FullscreenControl" type="CheckButton" parent="OptionsMenu"]
+layout_mode = 0
+offset_left = 22.5
+offset_top = 162.0
+offset_right = 149.5
+offset_bottom = 193.0
+text = "Fullscreen"
+script = ExtResource("4_12kdf")
+
+[node name="CreditsMenu" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -133.0
+offset_right = 301.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_left = NodePath("BackButton")
+focus_neighbor_top = NodePath("BackButton")
+focus_neighbor_right = NodePath("BackButton")
+focus_neighbor_bottom = NodePath("BackButton")
+
+[node name="Label" type="Label" parent="CreditsMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_right = 27.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_xwd2w")
+text = "Credits"
+
+[node name="Label2" type="Label" parent="CreditsMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -67.5
+offset_right = 224.0
+offset_bottom = 67.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xwd2w")
+text = "Developers:
+JAMIE
+mlemmily
+Samual
+Fathi
+Evan"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CreditsMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -388.0
+offset_top = -90.5
+offset_bottom = 90.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xwd2w")
+text = "Attributions:
+Music from Kevin Macleod
+\"Funny\" Fish from Furbetti
+
+The following where from godotshaders.com:
+Pixel art Water Shader from Taillight-Games
+PS1 Post processing from Mighty Duke
+Dissolve (Godot4.x) from KitsuneKotta"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CreditsMenu"]
+layout_mode = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.847059, 0.768627, 1)
+theme_override_fonts/font = ExtResource("3_xwd2w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Back
+"
+
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="OptionsMenu/MusicControl" to="OptionsMenu/MusicControl" method="_on_value_changed"]
+[connection signal="value_changed" from="OptionsMenu/SFXControl" to="OptionsMenu/SFXControl" method="_on_value_changed"]
+[connection signal="toggled" from="OptionsMenu/FullscreenControl" to="OptionsMenu/FullscreenControl" method="_on_toggled"]
+[connection signal="pressed" from="CreditsMenu/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://i48shqyjtw2d"
+path="res://.godot/imported/bigpaws.dialogue-198f7890c908c81a96efce132812f8ce.tres"
+
+[deps]
+
+source_file="res://npc/pawsboy/bigpaws.dialogue"
+dest_files=["res://.godot/imported/bigpaws.dialogue-198f7890c908c81a96efce132812f8ce.tres"]
+
+[params]
+
+defaults=true

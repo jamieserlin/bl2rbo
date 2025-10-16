@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnqv2ixg66yj5"]
+
+[ext_resource type="Script" uid="uid://2i14svqtptnj" path="res://j_player.gd" id="1_7un63"]
+[ext_resource type="Texture2D" uid="uid://wu333fj0a3ml" path="res://sprites/player/borbi.png" id="2_7un63"]
+[ext_resource type="PackedScene" uid="uid://b6lpm6we5ac2m" path="res://nodes/dropshadow.tscn" id="3_3mo4v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_78scn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7un63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_me10o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3mo4v"]
+
+[node name="j-Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_7un63")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
+transform = Transform3D(6.30039, 0, 0, 0, 6.30039, 0, 0, 0, 1, 0, 0.718798, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_78scn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_me10o")
+
+[node name="CameraHolder" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraHolder"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+shape = SubResource("SphereShape3D_3mo4v")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder/SpringArm3D"]
+unique_name_in_owner = true
+
+[node name="dropshadow" parent="." instance=ExtResource("3_3mo4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.972201, 0)

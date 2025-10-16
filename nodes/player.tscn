@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://dnqv2ixg66yj5"]
+
+[ext_resource type="Script" uid="uid://2i14svqtptnj" path="res://scripts/j_player.gd" id="1_7un63"]
+[ext_resource type="Texture2D" uid="uid://cbs700cbxwt2q" path="res://sprites/player/blorbo_walk.png" id="2_tx81v"]
+[ext_resource type="Texture2D" uid="uid://c4e7vwj5d8wtg" path="res://sprites/player/blorbo_jump.png" id="3_cw1ft"]
+[ext_resource type="PackedScene" uid="uid://dxtiug36bo7y" path="res://nodes/e-audio_manager.tscn" id="4_hqdnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgq0j"]
+atlas = ExtResource("2_tx81v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5agpl"]
+atlas = ExtResource("3_cw1ft")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttfhm"]
+atlas = ExtResource("3_cw1ft")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlyxy"]
+atlas = ExtResource("3_cw1ft")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql8ed"]
+atlas = ExtResource("3_cw1ft")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aql1w"]
+atlas = ExtResource("2_tx81v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11xad"]
+atlas = ExtResource("2_tx81v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_78scn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgq0j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5agpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttfhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlyxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql8ed")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aql1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgq0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11xad")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_me10o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3mo4v"]
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+safe_margin = 0.2
+script = ExtResource("1_7un63")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
+transform = Transform3D(6.30039, 0, 0, 0, 6.30039, 0, 0, 0, 1, 0, 0.718798, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_78scn")
+animation = &"jump"
+frame_progress = 0.0338017
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_me10o")
+
+[node name="CameraHolder" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.734, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraHolder"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+shape = SubResource("SphereShape3D_3mo4v")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder/SpringArm3D"]
+unique_name_in_owner = true
+
+[node name="CoyoteTime" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="audio_manager" parent="." instance=ExtResource("4_hqdnm")]

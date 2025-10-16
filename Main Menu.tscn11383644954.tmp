@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://e3087lmnirb"]
+
+[ext_resource type="Texture2D" uid="uid://1n4sb3iaqvjs" path="res://textures/Sam_MainMenuTextures/MainMenuBackgrounkd.png" id="1_5b7ti"]
+[ext_resource type="Script" uid="uid://bxpogyd6fhl4k" path="res://main_menu.gd" id="1_dvdtt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvdtt"]
+texture = ExtResource("1_5b7ti")
+modulate_color = Color(0.329158, 0.329158, 0.329158, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5b7ti"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5b7ti"]
+bg_color = Color(0.487009, 0.487009, 0.487009, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 5
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5qic"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 5
+shadow_offset = Vector2(1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dvdtt")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvdtt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 240.0
+offset_right = 712.0
+offset_bottom = 453.0
+focus_neighbor_left = NodePath("StartGameButton")
+focus_neighbor_top = NodePath("StartGameButton")
+focus_neighbor_right = NodePath("StartGameButton")
+focus_neighbor_bottom = NodePath("StartGameButton")
+focus_next = NodePath("OptionsButton")
+focus_previous = NodePath("QuitButton")
+focus_mode = 2
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5b7ti")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5b7ti")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i5qic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5qic")
+text = "Quit
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -179.0
+offset_right = 129.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "GLORBO's SUPREME ADVENTURE 
+OF DOOOOOOOOOOOOMMMM"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

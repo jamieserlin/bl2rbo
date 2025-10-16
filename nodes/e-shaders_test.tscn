@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3laelhtn1pg7"]
+
+[ext_resource type="PackedScene" uid="uid://b2vuwn7rcbk50" path="res://nodes/geometry/rock.tscn" id="1_5i8cu"]
+
+[node name="Node3D2" type="Node3D"]
+
+[node name="rock" parent="." instance=ExtResource("1_5i8cu")]
+surface_material_override/0 = null
