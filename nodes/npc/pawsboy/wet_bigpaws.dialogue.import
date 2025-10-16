@@ -4,12 +4,12 @@ importer="dialogue_manager"
 importer_version=15
 type="Resource"
 uid="uid://coflivf636uma"
-path="res://.godot/imported/wet_bigpaws.dialogue-67f9e5c35552df614f1f401a4e9f0ef4.tres"
+path="res://.godot/imported/wet_bigpaws.dialogue-f5452c214618b83104719d1a0dca149f.tres"
 
 [deps]
 
-source_file="res://npc/pawsboy/wet_bigpaws.dialogue"
-dest_files=["res://.godot/imported/wet_bigpaws.dialogue-67f9e5c35552df614f1f401a4e9f0ef4.tres"]
+source_file="res://nodes/npc/pawsboy/wet_bigpaws.dialogue"
+dest_files=["res://.godot/imported/wet_bigpaws.dialogue-f5452c214618b83104719d1a0dca149f.tres"]
 
 [params]
 
