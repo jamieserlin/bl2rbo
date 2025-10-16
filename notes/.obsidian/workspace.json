@@ -62,9 +62,23 @@
               "icon": "lucide-file",
               "title": "2 - Bullet Hell"
             }
+          },
+          {
+            "id": "301ca602cbc613f6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Ideas/2 - Bullet Hell.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2 - Bullet Hell"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -212,14 +226,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "6b1d448831c416c6",
+  "active": "301ca602cbc613f6",
   "lastOpenFiles": [
-    "Ideas/1 - Original blorbo.md",
+    "LORE NOTES.md",
+    "Welcome.md",
     "Ideas/2 - Bullet Hell.md",
-    "Ideas/Blorbo Kart.md",
-    "Ideas/Blorbo Kazoos.md",
-    "Ideas",
+    "Ideas/1 - Original blorbo.md",
+    "Ideas/3 - Blorbo Kart.md",
     "HELLO EMOJI.md",
-    "Welcome.md"
+    "Ideas/Blorbo Kazoos.md",
+    "Ideas"
   ]
 }
